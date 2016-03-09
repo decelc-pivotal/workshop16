@@ -1,0 +1,20 @@
+= Use an Application Manifest
+
+== Goal
+
+Run cf push with an application manifest in your application directory, setting the number of instances to 3.
+
+Approximate time: 10 minutes
+
+== Exercises
+
+=== Modify the deployment manifest
+
+. Modify the application manifest for your Spring Boot application. Set the number of instances to 3
+
+. Run cf push and verify that the manifest settings are working.
+
+=== Check this out
+
+. There's a CF manifest generator online at http://cjd-manifest-generator.cfapps.io/
+

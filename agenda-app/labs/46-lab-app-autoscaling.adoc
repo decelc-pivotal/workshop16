@@ -1,0 +1,60 @@
+= Application Autoscaling
+
+== Goal
+
+In this section you will leverage Pivotal's Autoscaling Service to scale an application.
+
+
+Estimated time: 20 minutes
+
+=== Configuring Autoscaling
+
+. For this exercise, we will use the Spring Boot app that was previously deployed.  Make sure the number of instances is set to 1 for this exercise.
+
+. Using Apps Manager, create a new instance of the Autoscaler from the Marketplace.
++
+* Be sure to name your service instance: app-<your initials>-autoscaler
+* Be sure to select the Gold plan
+* Bind this instance to your Spring Boot app, and restage
+
+. Follow the instructions on link:http://docs.pivotal.io/pivotalcf/autoscaling[Autoscaling] to configure and enable your autoscaling service.
+
+. Launch the autoscaling dashboard for your service.  Set the following thresholds:
+
++
+* Min Instances: 1
+* Max Instances: 5
+* Low CPU Threshold: 5%
+* High CPU Threshold: 10%
+
+
+=== Generating Load and Observing Results
+
+. link:http://jmeter.apache.org/download_jmeter.cgi[Apache JMeter] Can be used to generate load.
+
+. Use the link:https://raw.githubusercontent.com/S2EDU/PCFImmersionStudentFiles/master/load-gen.jmx[load-gen.jmx script]  as a starting point.
+
+. Open the `load-gen.jmx` file in the JMeter GUI.
+
+. Expand the content of the JMeter test plan by: i) selecting the 'Load Generator' test plan on the left pane; and, ii) going to the menu: 'Option -> Expand All'
+
+. Edit the test plan to use your application's URL (do not include the `http://`). To do so, change the 'Server Name or IP' field on the 'HTTP Request Defaults' item.
+
+. Save the test plan: 'File -> Save'
+
+. Run the test plan: 'Run -> Start'
+
+. Use Apps Manager to observe your service scale up and back down based on load.
+
+. Stop the test plan: 'Run -> Stop'
+
+== Checking your work
+
+. An autoscaling service instance should show correctly under the VCAP_SERVICES environment variable.
++
+[source,bash]
+----
+$ cf env <your-app-name>
+----
+
+. Your app should scale up when the jmeter script is executed and back down after the script completes.

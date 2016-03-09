@@ -1,0 +1,7 @@
+---
+applications:
+- name: fidelity-agenda
+  memory: 512M 
+  instances: 1
+  host: fidelity-agenda
+  

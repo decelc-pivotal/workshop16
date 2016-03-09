@@ -1,0 +1,9 @@
+= Remote Debugging
+
+== Goal
+
+Setup remote debugging.
+
+. cf push APPNAME -b java_buildpack --no-start . cf set-env APPNAME JBP_CONFIG_DEBUG '{ enabled: true }' . cf start APPNAME . cf ssh -N -T -L 8000:localhost:8000 APPNAME
+. Then connect to localhost 8000 with your eclipse or other debugger. there is also a JMX framework also in newer versions of the buildpack [2].
+note you need at least version 3.3.1 for debug and perhaps master for JMX.

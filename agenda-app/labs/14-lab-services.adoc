@@ -1,0 +1,30 @@
+= Provision a Managed Service
+
+== Goal
+
+Provision an instance of a mysql database managed service and bind your Spring Boot app.
+
+Approximate time: 15 minutes
+
+== Exercises
+
+=== Create a mysql managed service instance
+
+. fff
+
+. ffff
+
+
+=== Create a mysql managed service instance
+
+. Use Apps Manager's Marketplace or the CLI to create an instance of the ClearDB MySQL Database named my-test-mysql-db.
+
+. Bind the mysql service instance to your version 2 application.
+
+. Use Apps Manager and the CLI to verify that the service is bound to your application.
+
+. cf push the application. Verify that the VCAP_SERVICES environment variable is set three ways. 1) View the variables in the
+application's Env Variables tab in Apps Manager. 2) View the application's environment variables using the CLI. 3) View the variables
+in the phpinfo() page of your application.
+
+You have successfully provisioned and used a managed service!
